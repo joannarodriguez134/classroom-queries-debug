@@ -7,7 +7,11 @@ class DepartmentsController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-    @department = Department.where({:id => the_id })
+
+    matching_departments = Department.where({:id => the_id })
+    @department = matching_departments.first
+
+
 
     render({ :template => "departments/show" })
   end
